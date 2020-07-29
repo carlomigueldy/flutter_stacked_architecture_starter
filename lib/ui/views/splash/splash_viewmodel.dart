@@ -11,6 +11,5 @@ class SplashViewModel extends ReactiveViewModel {
 
   init() {
     _authService.tryAutoLogin();
-    print('has token ' + _authService.loggedIn.toString());
   }
 }

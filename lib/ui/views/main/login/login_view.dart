@@ -8,12 +8,8 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<LoginViewModel>.reactive(
       viewModelBuilder: () => LoginViewModel(),
-      builder: (context, model, child) => SafeArea(
-        child: Scaffold(
-          body: Center(
-            child: Text('Login View'),
-          ),
-        ),
+      builder: (context, model, child) => Center(
+        child: Text('Login View'),
       ),
     );
   }

@@ -56,6 +56,8 @@ class AuthenticationService with ReactiveServiceMixin {
     } else {
       _navigationService.pushNamedAndRemoveUntil(Routes.mainView);
     }
+
+    print('[Authentication Service] has token? ' + loggedIn.toString());
   }
 
   /// Login with email and password.

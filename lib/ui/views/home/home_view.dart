@@ -11,7 +11,7 @@ class HomeView extends StatelessWidget {
       builder: (context, model, child) => SafeArea(
         child: Scaffold(
           body: Center(
-            child: Text('Home View'),
+            child: Text(model.user.fullName ?? 'anonymous user'),
           ),
         ),
       ),

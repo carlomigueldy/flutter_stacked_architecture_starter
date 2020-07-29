@@ -8,12 +8,8 @@ class RegisterView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<RegisterViewModel>.reactive(
       viewModelBuilder: () => RegisterViewModel(),
-      builder: (context, model, child) => SafeArea(
-        child: Scaffold(
-          body: Center(
-            child: Text('Register View'),
-          ),
-        ),
+      builder: (context, model, child) => Center(
+        child: Text('Register View'),
       ),
     );
   }
