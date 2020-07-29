@@ -1,16 +1,3 @@
 # stacked_architecture_template
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This template uses heavily the stacked architecture by FilledStacks, it is heavily reliant on code generators where we don't have to write boilerplate code again and again in every feature you might need for building the app. This template is not entirely opinionated and you may modify it to your needs but I recommend to follow the pattern where code can be testable, loosely coupled and comes with consistency that it means code is easier to maintain and potentially scale with ease. And it also comes with an Authentication Service that handles token-based authentication from a RESTful API.
