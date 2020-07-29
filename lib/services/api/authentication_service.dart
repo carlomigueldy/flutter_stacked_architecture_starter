@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:stacked_architecture_template/services/api/models/authentication_response.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:observable_ish/observable_ish.dart';
@@ -12,6 +11,7 @@ import '../../models/user.dart';
 import '../../app/routes.gr.dart';
 import '../../app/locator.dart';
 import '../alert_service.dart';
+import 'models/authentication_response.dart';
 
 @lazySingleton
 class AuthenticationService with ReactiveServiceMixin {
@@ -51,10 +51,10 @@ class AuthenticationService with ReactiveServiceMixin {
 
       await fetchUser();
       token.isNotEmpty
-          ? _navigationService.pushNamedAndRemoveUntil(Routes.tabLayoutView)
-          : _navigationService.pushNamedAndRemoveUntil(Routes.loginView);
+          ? _navigationService.pushNamedAndRemoveUntil(Routes.homeView)
+          : _navigationService.pushNamedAndRemoveUntil(Routes.mainView);
     } else {
-      _navigationService.pushNamedAndRemoveUntil(Routes.loginView);
+      _navigationService.pushNamedAndRemoveUntil(Routes.mainView);
     }
   }
 
@@ -84,7 +84,7 @@ class AuthenticationService with ReactiveServiceMixin {
         message: "You have logged in.",
         type: SnackBarType.SUCCESS,
       );
-      _navigationService.pushNamedAndRemoveUntil(Routes.tabLayoutView);
+      _navigationService.pushNamedAndRemoveUntil(Routes.homeView);
 
       return response;
     } on DioError catch (e) {
@@ -96,13 +96,16 @@ class AuthenticationService with ReactiveServiceMixin {
   ///
   /// @param [UsernameCredential] credentials A map containing email and password
   /// @return void
-  Future loginWithUsername(UsernameCredential credentials) async {
+  Future loginWithUsername({
+    @required String username,
+    @required String password,
+  }) async {
     try {
       Response response = await dio.post(
         '/api/auth/login',
         data: {
-          "username": credentials.username,
-          "password": credentials.password,
+          "username": username,
+          "password": password,
         },
       );
 
@@ -115,7 +118,7 @@ class AuthenticationService with ReactiveServiceMixin {
         message: "You have logged in.",
         type: SnackBarType.SUCCESS,
       );
-      _navigationService.pushNamedAndRemoveUntil(Routes.tabLayoutView);
+      _navigationService.pushNamedAndRemoveUntil(Routes.homeView);
 
       return response;
     } on DioError catch (e) {
@@ -156,7 +159,7 @@ class AuthenticationService with ReactiveServiceMixin {
         message: "You have logged out.",
         type: SnackBarType.INFO,
       );
-      _navigationService.pushNamedAndRemoveUntil(Routes.loginView);
+      _navigationService.pushNamedAndRemoveUntil(Routes.mainView);
     } on DioError catch (e) {
       handleError(e);
     }
@@ -221,7 +224,7 @@ class AuthenticationService with ReactiveServiceMixin {
               "You do not have the right privileges to access this resource.",
           type: SnackBarType.ERROR,
         );
-        _navigationService.pushNamedAndRemoveUntil(Routes.loginView);
+        _navigationService.pushNamedAndRemoveUntil(Routes.mainView);
         break;
       case 422:
         _alertService.showSnackbar(
@@ -234,7 +237,7 @@ class AuthenticationService with ReactiveServiceMixin {
           message: "Incorrect credentials.",
           type: SnackBarType.ERROR,
         );
-        _navigationService.pushNamedAndRemoveUntil(Routes.loginView);
+        _navigationService.pushNamedAndRemoveUntil(Routes.mainView);
         break;
       case 404:
         _alertService.showSnackbar(
