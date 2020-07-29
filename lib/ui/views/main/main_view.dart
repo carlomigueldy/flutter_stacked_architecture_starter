@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+// Views
+import 'login/login_view.dart' show LoginView;
+import 'register/register_view.dart' show RegisterView;
+
+// ViewModel
 import 'main_viewmodel.dart' show MainViewModel;
 
 class MainView extends StatelessWidget {
@@ -10,8 +15,13 @@ class MainView extends StatelessWidget {
       viewModelBuilder: () => MainViewModel(),
       builder: (context, model, child) => SafeArea(
         child: Scaffold(
-          body: Center(
-            child: Text('Main View'),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              LoginView(),
+              RegisterView(),
+            ],
           ),
         ),
       ),
