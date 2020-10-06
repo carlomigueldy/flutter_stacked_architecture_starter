@@ -3,7 +3,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import 'app/locator.dart';
-import 'app/routes.gr.dart';
+import 'app/routes.gr.dart' as appRouter;
 import 'services/theme_service.dart';
 
 void main() {
@@ -25,8 +25,8 @@ class App extends StatelessWidget {
         themeMode: model.themeMode,
         theme: model.themeData,
         navigatorKey: locator<NavigationService>().navigatorKey,
-        onGenerateRoute: Router().onGenerateRoute,
-        initialRoute: Routes.splashView,
+        onGenerateRoute: appRouter.Router().onGenerateRoute,
+        initialRoute: appRouter.Routes.splashView,
       ),
     );
   }
