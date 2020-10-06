@@ -12,4 +12,8 @@ class HomeViewModel extends ReactiveViewModel {
 
   @override
   List<ReactiveServiceMixin> get reactiveServices => [_authService];
+
+  Future<void> logout() async {
+    await _authService.logout();
+  }
 }
