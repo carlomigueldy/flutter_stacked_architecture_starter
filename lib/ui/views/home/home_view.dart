@@ -10,8 +10,19 @@ class HomeView extends StatelessWidget {
       viewModelBuilder: () => HomeViewModel(),
       builder: (context, model, child) => SafeArea(
         child: Scaffold(
-          body: Center(
-            child: Text(model.user.fullName ?? 'anonymous user'),
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(9.0),
+                child: Text(model.user.fullName ?? 'anonymous user'),
+              ),
+              RaisedButton(
+                onPressed: () => model.logout(),
+                child: Text('LOGOUT'),
+              ),
+            ],
           ),
         ),
       ),
