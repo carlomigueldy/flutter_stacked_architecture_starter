@@ -1,10 +1,7 @@
 import 'package:dio/dio.dart';
+import 'config/api.dart';
 
-// // ignore: non_constant_identifier_names
-// final String API_BASE_URL = 'http://192.168.1.7';
-
-// ignore: non_constant_identifier_names
-final String API_BASE_URL = 'http://10.0.2.2:8000';
+Map<String, String> headers = {'Accept': 'application/json'};
 
 /// Dio HTTP client, accessible globally with a single [API_BASE_URL]
 ///
@@ -12,8 +9,9 @@ final String API_BASE_URL = 'http://10.0.2.2:8000';
 /// @return [Dio]
 final Dio dio = Dio(
   BaseOptions(
-    baseUrl: API_BASE_URL,
+    baseUrl: ApiConfig.getApiBaseUrl(),
     connectTimeout: 5000,
     receiveTimeout: 3000,
+    headers: headers,
   ),
 );

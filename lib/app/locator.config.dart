@@ -13,6 +13,8 @@ import '../services/api/authentication_service.dart';
 import '../services/api/user_service.dart';
 import '../services/theme_service.dart';
 import '../services/third_party_services_module.dart';
+import 'exceptions/handler.dart';
+import 'utils/device.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -21,8 +23,10 @@ void $initGetIt(GetIt g, {String environment}) {
   final gh = GetItHelper(g, environment);
   final thirdPartyServicesModule = _$ThirdPartyServicesModule();
   gh.lazySingleton<AlertService>(() => AlertService());
+  gh.lazySingleton<AppDeviceInfo>(() => AppDeviceInfo());
   gh.lazySingleton<AuthenticationService>(() => AuthenticationService());
   gh.lazySingleton<DialogService>(() => thirdPartyServicesModule.dialogService);
+  gh.lazySingleton<ExceptionHandler>(() => ExceptionHandler());
   gh.lazySingleton<NavigationService>(
       () => thirdPartyServicesModule.navigationService);
   gh.lazySingleton<SnackbarService>(

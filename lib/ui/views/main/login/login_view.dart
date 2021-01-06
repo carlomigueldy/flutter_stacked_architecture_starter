@@ -6,7 +6,7 @@ import 'login_viewmodel.dart' show LoginViewModel;
 class LoginView extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   final _textController = <String, TextEditingController>{
-    "email": TextEditingController(text: "admin@admin.com"),
+    "email": TextEditingController(text: "dev@dev.com"),
     "password": TextEditingController(text: "password"),
   };
 
