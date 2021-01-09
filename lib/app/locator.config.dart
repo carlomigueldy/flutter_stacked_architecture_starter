@@ -5,22 +5,26 @@
 // **************************************************************************
 
 import 'package:get_it/get_it.dart';
-import 'package:injectable/get_it_helper.dart';
+import 'package:injectable/injectable.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../services/alert_service.dart';
+import 'utils/device.dart';
 import '../services/api/authentication_service.dart';
-import '../services/api/user_service.dart';
+import 'exceptions/handler.dart';
 import '../services/theme_service.dart';
 import '../services/third_party_services_module.dart';
-import 'exceptions/handler.dart';
-import 'utils/device.dart';
+import '../services/api/user_service.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
 
-void $initGetIt(GetIt g, {String environment}) {
-  final gh = GetItHelper(g, environment);
+GetIt $initGetIt(
+  GetIt get, {
+  String environment,
+  EnvironmentFilter environmentFilter,
+}) {
+  final gh = GetItHelper(get, environment, environmentFilter);
   final thirdPartyServicesModule = _$ThirdPartyServicesModule();
   gh.lazySingleton<AlertService>(() => AlertService());
   gh.lazySingleton<AppDeviceInfo>(() => AppDeviceInfo());
@@ -33,6 +37,7 @@ void $initGetIt(GetIt g, {String environment}) {
       () => thirdPartyServicesModule.snackbarService);
   gh.lazySingleton<ThemeService>(() => ThemeService());
   gh.lazySingleton<UserService>(() => UserService());
+  return get;
 }
 
 class _$ThirdPartyServicesModule extends ThirdPartyServicesModule {

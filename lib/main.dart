@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stacked_architecture_starter/app/ui/setup_snackbar_ui.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -8,9 +9,8 @@ import 'services/theme_service.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
   setupLocator();
-
+  setupSnackbarUi();
   runApp(App());
 }
 

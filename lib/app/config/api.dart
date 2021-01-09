@@ -1,4 +1,4 @@
-import 'package:stacked_architecture_starter/app/config/environment.dart';
+import 'environment.dart';
 
 class ApiConfig {
   static getApiBaseUrl() {

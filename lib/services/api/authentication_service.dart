@@ -6,6 +6,7 @@ import 'package:injectable/injectable.dart';
 import 'package:stacked/stacked.dart';
 import 'package:dio/dio.dart';
 
+import '../../app/ui/setup_snackbar_ui.dart';
 import '../../app/exceptions/handler.dart';
 import '../../app/utils/device.dart';
 import '../../app/http.dart';
@@ -96,7 +97,10 @@ class AuthenticationService with ReactiveServiceMixin {
 
       return response;
     } on DioError catch (e) {
-      _exceptionHandler.handleError(e);
+      _alertService.showSnackbar(
+        message: _exceptionHandler.getErrorMessage(e),
+        type: SnackBarType.ERROR,
+      );
     }
   }
 
@@ -131,7 +135,10 @@ class AuthenticationService with ReactiveServiceMixin {
 
       return response;
     } on DioError catch (e) {
-      _exceptionHandler.handleError(e);
+      _alertService.showSnackbar(
+        message: _exceptionHandler.getErrorMessage(e),
+        type: SnackBarType.ERROR,
+      );
     }
   }
 
@@ -148,7 +155,10 @@ class AuthenticationService with ReactiveServiceMixin {
       User data = User.fromJson(response.data);
       _user.value = data;
     } on DioError catch (e) {
-      _exceptionHandler.handleError(e);
+      _alertService.showSnackbar(
+        message: _exceptionHandler.getErrorMessage(e),
+        type: SnackBarType.ERROR,
+      );
     }
   }
 
@@ -170,7 +180,10 @@ class AuthenticationService with ReactiveServiceMixin {
       );
       _navigationService.pushNamedAndRemoveUntil(Routes.mainView);
     } on DioError catch (e) {
-      _exceptionHandler.handleError(e);
+      _alertService.showSnackbar(
+        message: _exceptionHandler.getErrorMessage(e),
+        type: SnackBarType.ERROR,
+      );
     }
   }
 
