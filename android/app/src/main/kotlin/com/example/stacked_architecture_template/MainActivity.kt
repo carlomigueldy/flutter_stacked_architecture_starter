@@ -1,4 +1,4 @@
-package com.example.flutter_instagram_ui_clone
+package com.example.flutter_stacked_architecture_starter
 
 import io.flutter.embedding.android.FlutterActivity
 

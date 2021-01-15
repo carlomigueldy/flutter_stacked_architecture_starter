@@ -1,29 +1,52 @@
-import 'package:flutter_instagram_ui_clone/faker/users.dart';
 import 'package:injectable/injectable.dart';
-import 'package:observable_ish/observable_ish.dart';
-import 'package:stacked/stacked.dart';
 
 import '../../models/user.dart' show User;
+import 'base_service.dart' show BaseService;
 
 @lazySingleton
-class UserService with ReactiveServiceMixin {
-  RxValue<User> _user = RxValue<User>(initial: null);
-  RxValue<List<User>> _users = RxValue<List<User>>(initial: []);
+class UserService implements BaseService<User> {
+  @override
+  String endpoint;
 
-  User get user => _user.value;
-  List<User> get users => _users.value;
-
-  UserService() {
-    listenToReactiveValues([_user, _users]);
-
-    _users.value = generateFakeUsers(quantity: 5);
+  @override
+  Future<List<User>> fetchAll() {
+    // TODO: implement fetchAll
+    throw UnimplementedError();
   }
 
-  Future<List<User>> all() async {
-    return _users.value;
+  @override
+  Future<User> fetchById({int id}) {
+    // TODO: implement fetchById
+    throw UnimplementedError();
   }
 
-  Future<User> findById({int userId}) async {
-    return _users.value.firstWhere((element) => element.userId == userId);
+  @override
+  Future<User> requestCreate({User model}) {
+    // TODO: implement requestCreate
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool> requestDeleteById({int id}) {
+    // TODO: implement requestDeleteById
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool> requestForceDeleteById({int id}) {
+    // TODO: implement requestForceDeleteById
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool> requestRestoreById({int id}) {
+    // TODO: implement requestRestoreById
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<User> requestUpdate({User model, int id}) {
+    // TODO: implement requestUpdate
+    throw UnimplementedError();
   }
 }

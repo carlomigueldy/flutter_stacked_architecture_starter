@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route_annotations.dart';
 
 // Views
 import '../ui/views/home/home_view.dart';
+import '../ui/views/main/main_view.dart';
 import '../ui/views/splash/splash_view.dart';
-import '../ui/views/app/app_view.dart';
 
 @MaterialAutoRouter(
   routes: <AutoRoute>[
@@ -13,8 +13,8 @@ import '../ui/views/app/app_view.dart';
       initial: true,
     ),
     MaterialRoute(
-      path: '/app',
-      page: AppView,
+      path: '/main',
+      page: MainView,
     ),
     MaterialRoute(
       path: '/home',
