@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stacked_architecture_starter/app/ui/setup_snackbar_ui.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import 'app/ui/setup_snackbar_ui.dart';
 import 'app/locator.dart';
 import 'app/routes.gr.dart' as appRouter;
 import 'services/theme_service.dart';

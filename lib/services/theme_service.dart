@@ -39,7 +39,7 @@ class ThemeService with ReactiveServiceMixin {
     return ThemeData(
       primaryColor: getColor(type: ColorType.primary),
       accentColor: getColor(type: ColorType.accent),
-      primarySwatch: getColor(type: ColorType.primary),
+      // primarySwatch: getColor(type: ColorType.primary),
       fontFamily: fontFamily,
       brightness: Brightness.dark,
       cardTheme: CardTheme(
@@ -58,7 +58,7 @@ class ThemeService with ReactiveServiceMixin {
     return ThemeData(
       primaryColor: getColor(type: ColorType.primary),
       accentColor: getColor(type: ColorType.accent),
-      primarySwatch: getColor(type: ColorType.primary),
+      // primarySwatch: getColor(type: ColorType.primary),
       fontFamily: fontFamily,
       brightness: Brightness.light,
       cardTheme: CardTheme(
@@ -68,6 +68,14 @@ class ThemeService with ReactiveServiceMixin {
         buttonColor: getColor(type: ColorType.primary),
         textTheme: ButtonTextTheme.primary,
         shape: shape,
+      ),
+      appBarTheme: AppBarTheme(
+        color: Colors.grey[50],
+        elevation: 0,
+      ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: Colors.red,
+        elevation: 5,
       ),
     );
   }

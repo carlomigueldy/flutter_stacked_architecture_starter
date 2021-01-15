@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'photo.dart';
+
 part 'user.g.dart';
 
 @JsonSerializable(
@@ -7,31 +9,29 @@ part 'user.g.dart';
   fieldRename: FieldRename.snake,
 )
 class User {
-  final int id;
-  final String avatar;
-  final String username;
-  final String role;
-  final String firstName;
-  final String middleName;
-  final String lastName;
+  final String userId;
+  final String photoUrl;
   final String fullName;
-  final String email;
-  final String phoneNumber;
-  final String timeZone;
+  final String category;
+  final String description;
+  final List<User> followers;
+  final List<User> following;
+  List<Photo> photos;
 
   User({
-    this.id,
-    this.avatar: "",
-    this.username: "",
-    this.role: "",
-    this.fullName: "",
-    this.firstName: "",
-    this.middleName: "",
-    this.lastName: "",
-    this.email: "",
-    this.phoneNumber: "",
-    this.timeZone: "",
+    this.fullName,
+    this.category,
+    this.description,
+    this.followers,
+    this.following,
+    this.photos,
+    this.userId,
+    this.photoUrl,
   });
+
+  setPhotos(List<Photo> payload) {
+    this.photos = payload;
+  }
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);

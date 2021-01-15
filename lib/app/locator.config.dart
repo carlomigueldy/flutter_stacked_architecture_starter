@@ -12,6 +12,7 @@ import '../services/alert_service.dart';
 import 'utils/device.dart';
 import '../services/api/authentication_service.dart';
 import 'exceptions/handler.dart';
+import '../services/api/photo_service.dart';
 import '../services/theme_service.dart';
 import '../services/third_party_services_module.dart';
 import '../services/api/user_service.dart';
@@ -35,6 +36,7 @@ GetIt $initGetIt(
   gh.lazySingleton<ExceptionHandler>(() => ExceptionHandler());
   gh.lazySingleton<NavigationService>(
       () => thirdPartyServicesModule.navigationService);
+  gh.lazySingleton<PhotoService>(() => PhotoService());
   gh.lazySingleton<SnackbarService>(
       () => thirdPartyServicesModule.snackbarService);
   gh.lazySingleton<ThemeService>(() => ThemeService());

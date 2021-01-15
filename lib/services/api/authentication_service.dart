@@ -57,9 +57,9 @@ class AuthenticationService with ReactiveServiceMixin {
       await fetchUser();
       token.isNotEmpty
           ? _navigationService.pushNamedAndRemoveUntil(Routes.homeView)
-          : _navigationService.pushNamedAndRemoveUntil(Routes.mainView);
+          : _navigationService.pushNamedAndRemoveUntil(Routes.appView);
     } else {
-      _navigationService.pushNamedAndRemoveUntil(Routes.mainView);
+      _navigationService.pushNamedAndRemoveUntil(Routes.appView);
     }
 
     print('[Authentication Service] has token? ' + loggedIn.toString());
@@ -173,12 +173,12 @@ class AuthenticationService with ReactiveServiceMixin {
       );
 
       deleteToken();
-      _user.value = User(id: 0);
+      _user.value = User(userId: null);
       _alertService.showSnackbar(
         message: "You have logged out.",
         type: SnackBarType.INFO,
       );
-      _navigationService.pushNamedAndRemoveUntil(Routes.mainView);
+      _navigationService.pushNamedAndRemoveUntil(Routes.appView);
     } on DioError catch (e) {
       _alertService.showSnackbar(
         message: _exceptionHandler.getErrorMessage(e),

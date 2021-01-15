@@ -9,17 +9,17 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../ui/views/app/app_view.dart';
 import '../ui/views/home/home_view.dart';
-import '../ui/views/main/main_view.dart';
 import '../ui/views/splash/splash_view.dart';
 
 class Routes {
   static const String splashView = '/';
-  static const String mainView = '/main';
+  static const String appView = '/app';
   static const String homeView = '/home';
   static const all = <String>{
     splashView,
-    mainView,
+    appView,
     homeView,
   };
 }
@@ -29,7 +29,7 @@ class Router extends RouterBase {
   List<RouteDef> get routes => _routes;
   final _routes = <RouteDef>[
     RouteDef(Routes.splashView, page: SplashView),
-    RouteDef(Routes.mainView, page: MainView),
+    RouteDef(Routes.appView, page: AppView),
     RouteDef(Routes.homeView, page: HomeView),
   ];
   @override
@@ -41,9 +41,9 @@ class Router extends RouterBase {
         settings: data,
       );
     },
-    MainView: (data) {
+    AppView: (data) {
       return MaterialPageRoute<dynamic>(
-        builder: (context) => MainView(),
+        builder: (context) => AppView(),
         settings: data,
       );
     },
